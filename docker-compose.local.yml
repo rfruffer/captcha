@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  tg-captcha-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tg-captcha-bot:latest
+    volumes:
+      - ./config.toml:/config.toml
+      - ./help_message.txt:/help_message.txt
+    restart: unless-stopped
+    environment:
+      TGTOKEN: $TGTOKEN
